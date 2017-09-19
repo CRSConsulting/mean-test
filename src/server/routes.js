@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const mobileService = require('./mobile.service')
 const heroService = require('./hero.service');
 
 router.get('/heroes', (req, res) => {
@@ -21,11 +20,11 @@ router.delete('/hero/:id', (req, res) => {
 });
 
 router.get('/mobiles', (req, res) => {
-  mobileService.getMobiles(req, res);
+  heroService.getMobiles(req, res);
 });
 
 router.post('/mobile', (req, res) => {
-  mobileService.postMobile(req, res);
+  heroService.postMobile(req, res);
 });
 
 module.exports = router;
