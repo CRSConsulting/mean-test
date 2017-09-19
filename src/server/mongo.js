@@ -1,4 +1,4 @@
-require('dotenv').config()
+
 const mongoose = require('mongoose');
 /**
  * Set to Node.js native promises
