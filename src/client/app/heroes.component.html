@@ -28,7 +28,29 @@
         </div>
       </div>
       <button (click)="cancel()">Cancel</button>
-      <button (click)="save()">Save</button>
+      <button (click)="saveHero()">Save</button>
     </div>
+  </div>
+</div>
+
+<div class="editarea">
+  <button (click)="enableAddMode()">Add New Mobile</button>
+  <div>
+    <div class="editfields">
+      <div>
+        <label>id: </label>
+        <input [(ngModel)]="selectedMobile.id" placeholder="id" *ngIf="addingMobile" />
+        <label *ngIf="!addingMobile" class="value">{{selectedMobile.id}}</label>
+      </div>
+      <div>
+        <label>name: </label>
+        <input [(ngModel)]="selectedMobile.name" placeholder="name" />
+      </div>
+      <div>
+        <label>saying: </label>
+        <input [(ngModel)]="selectedMobile.saying" placeholder="saying" />
+      </div>
+    </div>
+    <button (click)="saveMobile()">Save</button>
   </div>
 </div>

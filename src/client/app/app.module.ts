@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeroService } from './hero.service';
+import { MobileService } from './mobile.service';
 import { HeroesComponent } from './heroes.component';
 
 @NgModule({
@@ -17,7 +18,7 @@ import { HeroesComponent } from './heroes.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [HeroService],
+  providers: [HeroService, MobileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

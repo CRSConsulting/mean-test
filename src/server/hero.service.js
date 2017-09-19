@@ -105,8 +105,8 @@ function postMobile(req, res) {
   const mobile = new Mobile(originalHero);
   mobile.save(error => {
     if (checkServerError(res, error)) return;
-    res.status(201).json(hero);
-    console.log('Hero created successfully!');
+    res.status(201).json(mobile);
+    console.log('mobile created successfully!');
   });
 }
 
