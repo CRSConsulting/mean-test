@@ -15,16 +15,16 @@
       <div class="editfields">
         <div>
           <label>id: </label>
-          <input [(ngModel)]="selectedHero?.id" placeholder="id" *ngIf="addingHero" />
+          <input [(ngModel)]="selectedHero.id" placeholder="id" *ngIf="addingHero" />
           <label *ngIf="!addingHero" class="value">{{selectedHero?.id}}</label>
         </div>
         <div>
           <label>name: </label>
-          <input [(ngModel)]="selectedHero?.name" placeholder="name" />
+          <input [(ngModel)]="selectedHero.name" placeholder="name" />
         </div>
         <div>
           <label>saying: </label>
-          <input [(ngModel)]="selectedHero>.saying" placeholder="saying" />
+          <input [(ngModel)]="selectedHero.saying" placeholder="saying" />
         </div>
       </div>
       <button (click)="cancel()">Cancel</button>
