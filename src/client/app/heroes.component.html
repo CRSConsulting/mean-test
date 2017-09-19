@@ -3,7 +3,7 @@
     <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
       <button class="delete-button" (click)="deleteHero(hero)">Delete</button>
       <div class="hero-element">
-        <!-- <div class="badge">{{hero?.id}}</div> -->
+        <div class="badge">{{hero?.id}}</div>
         <div class="name">{{hero?.name}}</div>
         <div class="saying">{{hero?.saying}}</div>
       </div>
@@ -11,13 +11,14 @@
   </ul>
   <div class="editarea">
     <button (click)="enableAddMode()">Add New Hero</button>
-    <div *ngIf="selectedHero">
+    <!-- <div *ngIf="selectedHero"> -->
+      <div>
       <div class="editfields">
-        <!-- <div>
+        <div>
           <label>id: </label>
           <input [(ngModel)]="selectedHero.id" placeholder="id" *ngIf="addingHero" />
           <label *ngIf="!addingHero" class="value">{{selectedHero?.id}}</label>
-        </div> -->
+        </div>
         <div>
           <label>name: </label>
           <input [(ngModel)]="selectedHero.name" placeholder="name" />
@@ -36,10 +37,10 @@
 <div class="mobile-container">
   <div>
     <div>
-      <!-- <div>
+      <div>
         <label>id: </label>
         <input [(ngModel)]="selectedMobile.id" placeholder="id" />
-      </div> -->
+      </div>
       <div>
         <label>name: </label>
         <input [(ngModel)]="selectedMobile.name" placeholder="name" />
