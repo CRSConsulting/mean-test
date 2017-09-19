@@ -1,4 +1,5 @@
 const Hero = require('./hero.model');
+const Mobile = require('./mobile.model');
 const ReadPreference = require('mongodb').ReadPreference;
 
 require('./mongo').connect();
@@ -17,7 +18,11 @@ function getHeroes(req, res) {
 }
 
 function postHero(req, res) {
-  const originalHero = { id: req.body.id, name: req.body.name, saying: req.body.saying };
+  const originalHero = {
+    id: req.body.id,
+    name: req.body.name,
+    saying: req.body.saying
+  };
   const hero = new Hero(originalHero);
   hero.save(error => {
     if (checkServerError(res, error)) return;
@@ -32,7 +37,9 @@ function putHero(req, res) {
     name: req.body.name,
     saying: req.body.saying
   };
-  Hero.findOne({ id: originalHero.id }, (error, hero) => {
+  Hero.findOne({
+    id: originalHero.id
+  }, (error, hero) => {
     if (checkServerError(res, error)) return;
     if (!checkFound(res, hero)) return;
 
@@ -48,7 +55,9 @@ function putHero(req, res) {
 
 function deleteHero(req, res) {
   const id = parseInt(req.params.id, 10);
-  Hero.findOneAndRemove({ id: id })
+  Hero.findOneAndRemove({
+      id: id
+    })
     .then(hero => {
       if (!checkFound(res, hero)) return;
       res.status(200).json(hero);
@@ -74,9 +83,38 @@ function checkFound(res, hero) {
   return hero;
 }
 
+function getMobiles(req, res) {
+  const docquery = Mobile.find({}).read(ReadPreference.NEAREST);
+  docquery
+    .exec()
+    .then(mobiles => {
+      res.status(200).json(mobiles);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+      return;
+    });
+}
+
+function postMobile(req, res) {
+  const originalHero = {
+    id: req.body.id,
+    name: req.body.name,
+    saying: req.body.saying
+  };
+  const mobile = new Mobile(originalHero);
+  mobile.save(error => {
+    if (checkServerError(res, error)) return;
+    res.status(201).json(hero);
+    console.log('Hero created successfully!');
+  });
+}
+
 module.exports = {
   getHeroes,
   postHero,
   putHero,
-  deleteHero
+  deleteHero,
+  getMobiles,
+  postMobile
 };
