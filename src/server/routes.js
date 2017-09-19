@@ -20,11 +20,12 @@ router.delete('/hero/:id', (req, res) => {
 });
 
 router.get('/mobiles', (req, res) => {
-  heroService.getMobiles(req, res);
+  heroService.insertManyObjs();
 });
 
 router.post('/mobile', (req, res) => {
-  heroService.postMobile(req, res);
+  heroService.insertMobile();
 });
+
 
 module.exports = router;
