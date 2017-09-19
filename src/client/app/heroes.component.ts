@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Hero } from './hero';
+import { Mobile } from './mobile';
 import { HeroService } from './hero.service';
+import { MobileService } from './mobile.service';
 
 @Component({
   selector: 'app-heroes',
@@ -9,13 +11,17 @@ import { HeroService } from './hero.service';
 })
 export class HeroesComponent implements OnInit {
   addingHero = false;
+  addingMobile = false;
   heroes: any = [];
+  mobiles: any = [];
   selectedHero: Hero;
+  selectedMobile: Mobile;
 
-  constructor(private heroService: HeroService) {}
+  constructor(private heroService: HeroService, private mobileService: MobileService) { }
 
   ngOnInit() {
     this.getHeroes();
+    this.getMobiles();
   }
 
   cancel() {
@@ -38,6 +44,12 @@ export class HeroesComponent implements OnInit {
     });
   }
 
+  getMobiles() {
+    return this.mobileService.getMobiles().subscribe(mobiles => {
+      this.mobiles = mobiles;
+    });
+  }
+
   enableAddMode() {
     this.addingHero = true;
     this.selectedHero = new Hero();
@@ -48,18 +60,27 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  save() {
+  saveHero() {
     if (this.addingHero) {
       this.heroService.addHero(this.selectedHero).subscribe(hero => {
         this.addingHero = false;
         this.selectedHero = null;
         this.heroes.push(hero);
-      });
+      })
     } else {
       this.heroService.updateHero(this.selectedHero).subscribe(hero => {
         this.addingHero = false;
         this.selectedHero = null;
       });
+    }
+  }
+  saveMobile() {
+    if (this.addingMobile) {
+      this.mobileService.addMobile(this.selectedMobile).subscribe(mobile => {
+        this.addingMobile = false;
+        this.selectedMobile = null;
+        this.mobiles.push(mobile);
+      })
     }
   }
 }

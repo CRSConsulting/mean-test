@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
  * Per http://mongoosejs.com/docs/promises.html
  */
 mongoose.Promise = global.Promise;
-
-const mongoUri = process.env.MONGODB_URI
-
+console.log('++++++++++++++++++++++++++++++++++++++++++++')
+// const mongoUri = process.env.MONGODB_URI
+const mongoUri = `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`
 function connect() {
  mongoose.set('debug', true);
  return mongoose.connect(mongoUri, { useMongoClient: true });
