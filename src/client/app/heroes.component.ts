@@ -60,7 +60,7 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  saveHero() {
+  save() {
     if (this.addingHero) {
       this.heroService.addHero(this.selectedHero).subscribe(hero => {
         this.addingHero = false;
