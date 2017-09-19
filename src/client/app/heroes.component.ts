@@ -52,9 +52,7 @@ export class HeroesComponent implements OnInit {
 
   enableAddMode() {
     this.addingHero = true;
-    this.addingMobile = true
     this.selectedHero = new Hero();
-    this.selectedMobile = new Mobile();
   }
 
   onSelect(hero: Hero) {
