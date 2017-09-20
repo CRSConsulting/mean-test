@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mobileSchema = new Schema({
+  createdAt: { type: Date, default: Date.now},
   firstName: String,
   middleName: String,
   lastName: String,

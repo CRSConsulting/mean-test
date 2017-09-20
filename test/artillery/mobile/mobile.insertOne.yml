@@ -1,0 +1,56 @@
+config:
+  target: "http://localhost:3000/api"
+  phases:
+    - duration: 1
+      arrivalRate: 1
+  processor: "./data.js"
+
+scenarios:
+  - name: "insertOne new Mobile document"
+    flow:
+      # call generateRandomData() to create the name, email, and password variables
+      - function: "generateRandomData"
+      - post:
+          url: "/mobile/one"
+          json:
+            firstName: "{{ firstName }}"
+            middleName: "{{ middleName }}"
+            lastName: "{{ lastName }}"
+            suffix: "{{ suffix }}"
+            addressOne: "{{ addressOne }}"
+            addressTwo: "{{ addressTwo }}"
+            city: "{{ city }}"
+            state: "{{ state }}"
+            zip: "{{ zip }}"
+            phoneNumber: "{{ phoneNumber }}"
+            debit: "{{ debit }}"
+            creditCard: "{{ creditCard }}"
+            donationAmt: "{{ donationAmy }}"
+            dateOfDonation: "{{ dateOfDonation }}"
+            multiDonation: "{{ multiDonation }}"
+            venue: "{{ venue }}"
+            venueCity: "{{ venueCity }}"
+            venueState: "{{ venueState }}"
+            dateOfEvent: "{{ dateOfEvent }}"
+            timeOfEvent: "{{ timeOfEvent }}"
+            artistEvent: "{{ artistEvent }}"
+            seatGrab: "{{ seatGrab }}"
+            prizeOne: "{{ prizeOne }}"
+            priceTwo: "{{ prizeTwo }}"
+            raffle50: "{{ raffle50 }}"
+            reelOne: "{{ reelOne }}"
+            reelTwo: "{{ reelTwo }}"
+            keyCode: "{{ keyCode }}"
+            vet: "{{ vet }}"
+            vetRelated: "{{ vetRelated }}"
+            thermometer: "{{ thermometer }}"
+            noThermometer: "{{ noThermometer }}"
+            announcer: "{{ announcer }}"
+            noAnnouncer: "{{ noAnnouncer }}"
+            email: "{{ email }}"
+            raffle: "{{ raffle }}"
+            raffleFee: "{{ raffleFee }}"
+            sweeps: "{{ sweeps }}"
+            sweepsFee: "{{ sweepsFee }}"
+      # Print the data we're sending while debugging the script:
+      - log: "Sent a request to /api/mobile with {{ firstName }}, {{ middleName }}, {{ lastName }} ,{{ suffix }} ,{{ addressOne }} ,{{ addressTwo }}, {{ city }} ,{{ state }} ,{{ zip }} ,{{ phoneNumber }} ,{{ debit }} ,{{ creditCard }} ,{{ donationAmy }} ,{{ dateOfDonation }} ,{{ multiDonation }} ,{{ venue }} ,{{ venueCity }} ,{{ venueState }} ,{{ dateOfEvent }} ,{{ timeOfEvent }} ,{{ artistEvent }} ,{{ seatGrab }} ,{{ prizeOne }} ,{{ prizeTwo }} ,{{ raffle50 }} ,{{ reelOne }} ,{{ reelTwo }} ,{{ keyCode }} ,{{ vet }} ,{{ vetRelated }} ,{{ thermometer }} ,{{ noThermometer }} ,{{ announcer }} ,{{ noAnnouncer }} ,{{ email }} ,{{ raffle }} ,{{ raffleFee }} ,{{ sweeps }} ,{{ sweepsFee }}"

@@ -20,12 +20,15 @@ router.delete('/hero/:id', (req, res) => {
 });
 
 router.get('/mobiles', (req, res) => {
-  heroService.insertManyObjs();
+  heroService.getManyObjs(req, res);
 });
 
 router.post('/mobile', (req, res) => {
-  heroService.insertMobile();
+  heroService.insertManyObjs(req, res)
 });
 
+router.post('/mobile/one', (req, res) => {
+  heroService.insertOneMobile(req, res)
+});
 
 module.exports = router;

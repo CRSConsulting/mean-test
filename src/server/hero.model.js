@@ -6,7 +6,8 @@ const heroSchema = new Schema(
   {
     id: { type: Number, required: true, unique: true },
     name: String,
-    saying: String
+    saying: String,
+    createdAt: { type: Date, default: Date.now}
   },
   {
     collection: 'heroes',

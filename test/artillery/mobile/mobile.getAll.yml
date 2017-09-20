@@ -1,0 +1,11 @@
+# Each virtual user retrieves 1000 documents per 1 second
+# This should produce 2000 documents
+config:
+  target: 'http://localhost:3000/api'
+  phases:
+    - duration: 2
+      arrivalRate: 1
+scenarios:
+  - flow:
+    - get:
+        url: "/mobiles"

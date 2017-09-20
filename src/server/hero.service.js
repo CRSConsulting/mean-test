@@ -83,69 +83,90 @@ function checkFound(res, hero) {
   return hero;
 }
 
-function insertMobile(req, res) {
-  const mobile = new Mobile({
-    firstName: 'John',
-    middleName: 'C',
-    lastName: 'Yu',
-    suffix: 'suffix',
-    addressOne: '123 Fake Street',
-    addressTwo: '#711',
-    city: 'los Angeles',
-    state: 'CA',
-    zip: '90007',
-    phoneNumber: '917-123-4567',
-    debit: '1111222233334444',
-    creditCard: '2222333344445555',
-    donationAmt: '1',
-    dateOfDonation: '09/14/2017',
-    multiDonation: 'none',
-    venue: 'Fenway',
-    venueCity: 'Boston',
-    venueState: 'MA',
-    dateOfEvent: '09/14/2017',
-    timeOfEvent: '17:00',
-    artistEvent: 'Big',
-    seatGrab: '35D',
-    prizeOne: 'apple',
-    priceTwo: 'orange',
-    raffle50: 'macbook',
-    reelOne: 'watch',
-    reelTwo: 'bracelet',
-    keyCode: '1234',
-    vet: 'yes',
-    vetRelated: 'yes',
-    thermometer: 'yes',
-    noThermometer: 'no',
-    announcer: 'yes',
-    noAnnouncer: 'no',
-    email: '123@email.com',
-    raffle: 'iphone',
-    raffleFee: '1',
-    sweeps: 'macbook pro',
-    sweepsFee: '1',
+function insertManyObjs(req, res) {
+  const data = [];
+
+  for (let i = 0; i < 1000; i++) {
+    const mobile = new Mobile(mobileObj)
+    data.push(mobile)
+  }
+  return Mobile.insertMany(data, error => {
+    if (checkServerError(res, error)) return;
+    res.status(201).json(data);
+    console.log('InsertManyObjs updated successfully!');
   });
-  insertManyObjs();
+}
+
+function getManyObjs(req, res) {
+  const docquery = Mobile.find({}).limit(1000).read(ReadPreference.NEAREST);
+  docquery
+    .exec()
+    .then(mobiles => {
+      res.status(200).json(mobiles);
+    })
+    .catch(error => {
+      res.status(500).send(error);
+      return;
+    });
+}
+
+function insertOneMobile(req, res) {
+  const mobileData = {
+    firstName: req.body.firstName,
+    middleName: req.body.middleName,
+    lastName: req.body.lastName,
+    suffix: req.body.suffix,
+    addressOne: req.body.addressOne,
+    addressTwo: req.body.addressTwo,
+    city: req.body.city,
+    state: req.body.state,
+    zip: req.body.zip,
+    phoneNumber: req.body.phoneNumber,
+    debit: req.body.debit,
+    creditCard: req.body.creditCard,
+    donationAmt: req.body.donationAmt,
+    dateOfDonation: req.body.dateOfDonation,
+    multiDonation: req.body.multiDonation,
+    venue: req.body.venue,
+    venueCity: req.body.venueCity,
+    venueState: req.body.venueState,
+    dateOfEvent: req.body.dateOfEvent,
+    timeOfEvent: req.body.timeOfEvent,
+    artistEvent: req.body.artistEvent,
+    seatGrab: req.body.seatGrab,
+    prizeOne: req.body.prizeOne,
+    priceTwo: req.body.priceTwo,
+    raffle50: req.body.raffle50,
+    reelOne: req.body.reelOne,
+    reelTwo: req.body.reelTwo,
+    keyCode: req.body.keyCode,
+    vet: req.body.vet,
+    vetRelated: req.body.vetRelated,
+    thermometer: req.body.thermometer,
+    noThermometer: req.body.noThermometer,
+    announcer: req.body.announcer,
+    noAnnouncer: req.body.noAnnouncer,
+    email: req.body.email,
+    raffle: req.body.raffle,
+    raffleFee: req.body.raffleFee,
+    sweeps: req.body.sweeps,
+    sweepsFee: req.body.sweepsFee,
+  };
+  const mobile = new Mobile(mobileData);
   mobile.save(error => {
     if (checkServerError(res, error)) return;
-    console.log('Mobile created successfully!');
+    res.status(201).json(mobile);
+    console.log('insertOneMobile created successfully!');
   });
-
-  function insertManyObjs() {
-    let data = [];
-
-    for (var i = 0; i < 1000; i++) {
-      let mobile = new Mobile(mobileObj)
-      data.push(mobile)
-    }
-    return Mobile.insertMany(data);
-  }
 }
+// }
 
 module.exports = {
   getHeroes,
   postHero,
   putHero,
   deleteHero,
-  insertMobile
+  insertManyObjs,
+  getManyObjs,
+  insertOneMobile
 };
