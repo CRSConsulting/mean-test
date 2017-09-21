@@ -9,7 +9,7 @@
     "assets": [
       "assets",
       "favicon.ico",
-      "assets/loaderio-6f795de852dfe0866bc1f8d54bc851d0.txt", {
+      "loaderio-6f795de852dfe0866bc1f8d54bc851d0.txt", {
         "glob": "**/*.*",
         "input": "../server/",
         "output": "../"
