@@ -6,6 +6,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MobileService } from './mobile.service';
 import { MobilesComponent } from './mobiles.component';
+import { RouterModule } from '@angular/router';
+// routes
+import { appRoutes } from '../routes';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,11 @@ import { MobilesComponent } from './mobiles.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [MobileService],
   bootstrap: [AppComponent]
