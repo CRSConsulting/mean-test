@@ -4,21 +4,20 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HeroService } from './hero.service';
 import { MobileService } from './mobile.service';
-import { HeroesComponent } from './heroes.component';
+import { MobilesComponent } from './mobiles.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
+    MobilesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [HeroService, MobileService],
+  providers: [MobileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
