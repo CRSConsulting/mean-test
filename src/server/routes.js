@@ -1,34 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-const heroService = require('./hero.service');
-
-router.get('/heroes', (req, res) => {
-  heroService.getHeroes(req, res);
-});
-
-router.post('/hero', (req, res) => {
-  heroService.postHero(req, res);
-});
-
-router.put('/hero/:id', (req, res) => {
-  heroService.putHero(req, res);
-});
-
-router.delete('/hero/:id', (req, res) => {
-  heroService.deleteHero(req, res);
-});
+const mobileService = require('./mobile.service');
 
 router.get('/mobiles', (req, res) => {
-  heroService.getManyObjs(req, res);
+  mobileService.getManyObjs(req, res);
 });
 
 router.post('/mobile', (req, res) => {
-  heroService.insertManyObjs(req, res)
+  mobileService.insertManyObjs(req, res)
 });
 
-router.post('/mobile/one', (req, res) => {
-  heroService.insertOneMobile(req, res)
-});
 
 module.exports = router;
