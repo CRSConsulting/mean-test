@@ -1,0 +1,12 @@
+.container {
+  position:relative;
+  text-align:center;
+}
+#dv1, #dv2 {
+  display:inline-block;
+  width:auto;
+  margin:0 3px;
+  padding: 5px;
+  border-radius: 10px;
+  background: gray;
+}
