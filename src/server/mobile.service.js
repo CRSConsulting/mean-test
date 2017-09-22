@@ -5,7 +5,7 @@ const curlGetOne = require('./curl-mobile/getOne');
 const curlGetTwo = require('./curl-mobile/getTwo');
 require('./mongo').connect();
 
-console.log('getManyObjs start', date.Now())
+console.log('getManyObjs start', Date.now())
 function getManyObjs(req, res) {
   const docquery = Mobile.find({}).limit(1000).read(ReadPreference.NEAREST);
   docquery
@@ -17,9 +17,9 @@ function getManyObjs(req, res) {
       checkServerError(res, error);
     });
 }
-console.log('getManyObjs end', date.Now());
+console.log('getManyObjs end', Date.now());
 
-console.log('insertManyObjs start', date.Now());
+console.log('insertManyObjs start', Date.now());
 function insertManyObjs(req, res) {
   const data = [];
 
@@ -33,7 +33,7 @@ function insertManyObjs(req, res) {
     console.log('InsertManyObjs updated successfully!');
   });
 }
-console.log('insertManyObjs end', date.Now());
+console.log('insertManyObjs end', Date.now());
 // function curlServiceGet(req, res) {
 //   curlGet.get()
 //   .then(data =>{
@@ -91,5 +91,4 @@ module.exports = {
   insertManyObjs,
   getManyObjs,
   curlServiceGet
-  // curlServicePost
 };
