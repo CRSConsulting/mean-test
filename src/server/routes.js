@@ -11,5 +11,8 @@ router.post('/mobile', (req, res) => {
   mobileService.insertManyObjs(req, res)
 });
 
+router.get('/curlone', (req, res) =>{
+  mobileService.curlServiceGet(req, res)
+})
 
 module.exports = router;
