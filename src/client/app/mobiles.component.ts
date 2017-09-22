@@ -18,15 +18,18 @@ export class MobilesComponent implements OnInit {
   }
 
   getMobiles() {
+    console.log('getManyObjs start', Date.now())
     return this.mobileService.getMobiles().subscribe(mobiles => {
       this.mobiles = mobiles;
-      console.log('GET 1000 documents', mobiles);
+      console.log('GET 1000 documents', Date.now());
     });
+
   }
 
   insertManyObjs() {
+    console.log('insertManyObjs start', Date.now())
    return this.mobileService.insertManyObjs(this.mobile).subscribe(mobile => {
-      console.log('1000 Documents POSTED successfully', mobile)
+      console.log('1000 Documents POSTED successfully', Date.now())
     })
   }
 }
