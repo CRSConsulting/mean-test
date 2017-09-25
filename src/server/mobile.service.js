@@ -5,7 +5,7 @@ const curlGetOne = require('./curl-mobile/getOne');
 const curlGetTwo = require('./curl-mobile/getTwo');
 require('./mongo').connect();
 
-console.log('getManyObjs start', Date.now())
+
 function getManyObjs(req, res) {
   const docquery = Mobile.find({}).limit(1000).read(ReadPreference.NEAREST);
   docquery
@@ -17,9 +17,7 @@ function getManyObjs(req, res) {
       checkServerError(res, error);
     });
 }
-console.log('getManyObjs end', Date.now());
 
-console.log('insertManyObjs start', Date.now());
 function insertManyObjs(req, res) {
   const data = [];
 
@@ -33,52 +31,7 @@ function insertManyObjs(req, res) {
     console.log('InsertManyObjs updated successfully!');
   });
 }
-console.log('insertManyObjs end', Date.now());
-// function curlServiceGet(req, res) {
-//   curlGet.get()
-//   .then(data =>{
-//     let queryCondition = JSON.parse(data.body);
-//     console.log('queryCondition', queryCondition.id)
-//     curlGetTwo.get(queryCondition.id)
-//   })
-//   .catch(error =>{
-//     checkServerError(res, error);
-//   })
-// }ƒ
-// function curlServiceGet(req, res) {
-//   curlGet.get()
-//     .then(data => {
-//       let queryCondition = data.body
-//       curlGetTwo.get(queryCondition)
-//         .then(data => {
-//           res.status(200).json(data);
-//         }).catch(error => {
-//           checkServerError(res, error);
-//         })
-//     })
-//     .catch(error => {
-//       checkServerError(res, error);
-//     })
-// }
 
-function curlServiceGet(req, res) {
-  curlGetOne.get()
-    .then(data => {
-      // console.log('First .then()data', data);
-      let queryCondition = data.body
-      // console.log('queryCondition', queryCondition);
-      curlGetTwo.get(queryCondition)
-        .then(data => {
-          console.log('Second .then()data', data.body);
-          res.status(200).json(data.body);
-        }).catch(error => {
-          checkServerError(res, error);
-        })
-    })
-    .catch(error => {
-      checkServerError(res, error);
-    })
-}
 
 function checkServerError(res, error) {
   if (error) {
@@ -90,5 +43,4 @@ function checkServerError(res, error) {
 module.exports = {
   insertManyObjs,
   getManyObjs,
-  curlServiceGet
 };

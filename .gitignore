@@ -11,6 +11,9 @@ src/server/env/environment.js
 # dependencies
 /node_modules
 
+# environment
+.env
+
 # IDEs and editors
 /.idea
 .project

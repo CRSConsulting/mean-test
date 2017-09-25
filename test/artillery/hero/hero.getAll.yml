@@ -1,9 +1,0 @@
-config:
-  target: 'http://localhost:3000/api'
-  phases:
-    - duration: 20
-      arrivalRate: 1
-scenarios:
-  - flow:
-    - get:
-        url: "/heroes"
