@@ -11,4 +11,8 @@ router.post('/mobile', (req, res) => {
   mobileService.insertManyObjs(req, res)
 });
 
+router.get('/tango', (req, res) => {
+  mobileService.insertOrder(req, res)
+})
+
 module.exports = router;

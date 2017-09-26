@@ -1,10 +1,22 @@
 const Mobile = require('./mobile.model');
+// const Tango = require('./tango.model');
 const ReadPreference = require('mongodb').ReadPreference;
-const mobileObj = require('./data');
-const curlGetOne = require('./curl-mobile/getOne');
-const curlGetTwo = require('./curl-mobile/getTwo');
+const mobileObj = require('./mobile.data');
+
+// console.log('tangoService', tangoService);
 require('./mongo').connect();
 
+// function insertOrder(req, res){
+//   console.log('tangoObj', tangoObj);
+//   let order = new Tango(tangoObj)
+//   order.save(error => {
+//     if(checkServerError(res, error)) return;
+//     res.status(201).json(order)
+//   });
+// }
+function insertOrder(req, res){
+  newFunction()
+}
 
 function getManyObjs(req, res) {
   const docquery = Mobile.find({}).limit(1000).read(ReadPreference.NEAREST);
@@ -32,6 +44,9 @@ function insertManyObjs(req, res) {
   });
 }
 
+function newFunction() {
+  const tangoService = require('./tango/tango.post');
+}
 
 function checkServerError(res, error) {
   if (error) {
@@ -43,4 +58,8 @@ function checkServerError(res, error) {
 module.exports = {
   insertManyObjs,
   getManyObjs,
+  insertOrder
 };
+
+
+
