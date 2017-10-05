@@ -1,16 +1,7 @@
 # MEAN-TEST
 
-by [CRS Consulting]
+by [CRS Consulting John] 
 
-## Docker
-
-Create the Docker image and run it locally
-
-```bash
-dockerImage=angular-cosmosdb
-docker build -t $dockerImage .
-docker run -d -p 3000:80 $dockerImage
-```
 
 ## Requirements
 
@@ -19,8 +10,10 @@ docker run -d -p 3000:80 $dockerImage
     ```bash
     npm install -g @angular/cli
     ```
-
-
+1. Install Visual Studio Code
+    ```
+    https://code.visualstudio.com/
+    ```
 ## Getting Started
 
 1. Clone this repository
@@ -55,4 +48,14 @@ docker run -d -p 3000:80 $dockerImage
     ```
 
 1. Open the browser to http://localhost:3000
+
+## Docker - NOT WORKING AT THE MOMENT
+
+Create the Docker image and run it locally
+
+```bash
+dockerImage=angular-cosmosdb
+docker build -t $dockerImage .
+docker run -d -p 3000:80 $dockerImage
+```
 
