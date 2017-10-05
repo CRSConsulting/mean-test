@@ -6,5 +6,5 @@ module.exports = {
       .get(`https://api.github.com/users/${username}`)
       .then(res => res.data)
       .catch(error => console.log(error));
-  }
+  },
 };

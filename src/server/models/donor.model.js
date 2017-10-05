@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const donorSchema = new Schema({
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date, default: Date.now },
   addressOne: String,
   addressTwo: String,
   city: String,
@@ -12,7 +12,7 @@ const donorSchema = new Schema({
 
 }, {
   collection: 'donor',
-  read: 'nearest'
+  read: 'nearest',
 });
 
 const Donor = mongoose.model('Donor', donorSchema);

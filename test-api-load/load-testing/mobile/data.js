@@ -1,52 +1,50 @@
-'use strict';
-
 module.exports = {
-  generateRandomData
+  generateRandomData,
 };
 
 const Faker = require('faker');
 
 function generateRandomData(userContext, events, done) {
   // generate data with Faker:
-  const firstName = Faker.random.word()
-  const middleName = Faker.random.word()
-  const lastName = Faker.random.word()
-  const suffix = Faker.random.word()
-  const addressOne = Faker.random.word()
-  const addressTwo = Faker.random.word()
-  const city = Faker.random.word()
-  const state = Faker.random.word()
-  const zip = Faker.random.word()
-  const phoneNumber = Faker.random.word()
-  const debit = Faker.random.word()
-  const creditCard = Faker.random.word()
-  const donationAmt = Faker.random.word()
-  const dateOfDonation = Faker.random.word()
-  const multiDonation = Faker.random.word()
-  const venue = Faker.random.word()
-  const venueCity = Faker.random.word()
-  const venueState = Faker.random.word()
-  const dateOfEvent = Faker.random.word()
-  const timeOfEvent = Faker.random.word()
-  const artistEvent = Faker.random.word()
-  const seatGrab = Faker.random.word()
-  const prizeOne = Faker.random.word()
-  const priceTwo = Faker.random.word()
-  const raffle50 = Faker.random.word()
-  const reelOne = Faker.random.word()
-  const reelTwo = Faker.random.word()
-  const keyCode = Faker.random.word()
-  const vet = Faker.random.word()
-  const vetRelated = Faker.random.word()
-  const thermometer = Faker.random.word()
-  const noThermometer = Faker.random.word()
-  const announcer = Faker.random.word()
-  const noAnnouncer = Faker.random.word()
-  const email = Faker.random.word()
-  const raffle = Faker.random.word()
-  const raffleFee = Faker.random.word()
-  const sweeps = Faker.random.word()
-  const sweepsFee = Faker.random.word()
+  const firstName = Faker.random.word();
+  const middleName = Faker.random.word();
+  const lastName = Faker.random.word();
+  const suffix = Faker.random.word();
+  const addressOne = Faker.random.word();
+  const addressTwo = Faker.random.word();
+  const city = Faker.random.word();
+  const state = Faker.random.word();
+  const zip = Faker.random.word();
+  const phoneNumber = Faker.random.word();
+  const debit = Faker.random.word();
+  const creditCard = Faker.random.word();
+  const donationAmt = Faker.random.word();
+  const dateOfDonation = Faker.random.word();
+  const multiDonation = Faker.random.word();
+  const venue = Faker.random.word();
+  const venueCity = Faker.random.word();
+  const venueState = Faker.random.word();
+  const dateOfEvent = Faker.random.word();
+  const timeOfEvent = Faker.random.word();
+  const artistEvent = Faker.random.word();
+  const seatGrab = Faker.random.word();
+  const prizeOne = Faker.random.word();
+  const priceTwo = Faker.random.word();
+  const raffle50 = Faker.random.word();
+  const reelOne = Faker.random.word();
+  const reelTwo = Faker.random.word();
+  const keyCode = Faker.random.word();
+  const vet = Faker.random.word();
+  const vetRelated = Faker.random.word();
+  const thermometer = Faker.random.word();
+  const noThermometer = Faker.random.word();
+  const announcer = Faker.random.word();
+  const noAnnouncer = Faker.random.word();
+  const email = Faker.random.word();
+  const raffle = Faker.random.word();
+  const raffleFee = Faker.random.word();
+  const sweeps = Faker.random.word();
+  const sweepsFee = Faker.random.word();
   // add variables to virtual user's context:
   userContext.vars.firstName = firstName;
   userContext.vars.middleName = middleName;

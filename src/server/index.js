@@ -1,18 +1,20 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
+
 const publicweb = './dist/publicweb';
 const mongoose = require('mongoose');
+
 const app = express();
 // mongoose
-mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', { useMongoClient: true })
-process.on('SIGNT', function(){
-  mongoose.connection.close(function (){
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', { useMongoClient: true });
+process.on('SIGNT', () => {
+  mongoose.connection.close(() => {
     console.log('Mongoose default connection disonnected through application termination');
-  })
-})
+  });
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,7 +23,7 @@ app.use(express.static(publicweb));
 console.log(`serving ${publicweb}`);
 
 // routes
-app.use('/api', routes)
+app.use('/api', routes);
 app.get('*', (req, res) => {
   res.sendFile('index.html', { root: publicweb });
 });
