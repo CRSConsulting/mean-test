@@ -18,11 +18,10 @@ function tangosService(options) {
 
   function insert() {
     let options_auth = {
-      user: "NTW_TWW_test",
-      password: "&ssBEWSvklcj?ctYjDDMCVROPjNUdnXHo&KRgvUykFP$"
+      user: process.env.TANGO_USER,
+      password: process.env.TANGO_PASSWORD
     };
     let client = new Client(options_auth);
-    // set content-type header and data as json in args parameter 
     let args = {
       data: {
         accountIdentifier: "ntw-one",
@@ -37,7 +36,6 @@ function tangosService(options) {
         },
         sendEmail: true,
         sender: {
-          email: "john@crs-consulting.com",
           firstName: "John",
           lastName: "Yu"
         },

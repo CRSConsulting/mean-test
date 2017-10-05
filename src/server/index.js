@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const app = express();
 // mongoose
 mongoose.Promise = global.Promise
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017', { useMongoClient: true })
 process.on('SIGNT', function(){
   mongoose.connection.close(function (){
     console.log('Mongoose default connection disonnected through application termination');
@@ -29,4 +29,4 @@ app.get('*', (req, res) => {
 const port = process.env.PORT || '3000';
 app.listen(port, () => console.log(`API running on localhost:${port}`));
 
-// module.exports = app;
+module.exports = app;

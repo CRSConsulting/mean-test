@@ -1,6 +1,6 @@
 const ReadPreference = require('mongodb').ReadPreference;
-const mobileObj = require('./mobile.data');
-const mobileJSON = require('./mobile.many.data');
+const mobileObj = require('./test-data/mobile.data');
+const mobileJSON = require('./test-data/mobile.many.data');
 
 module.exports = mobilesService
 
@@ -15,9 +15,7 @@ function mobilesService(options) {
 
   return {
     getAll,
-    insert,
-    insertMany,
-    loop
+    insert
   }
 
   function getAll() {
@@ -32,21 +30,5 @@ function mobilesService(options) {
       data.push(mobile)
     }
     return Mobile.insertMany(data);
-  }
-  function insertMany(data) {
-    return Mobile.insertMany(data);
-  }
-  ß
-  function loop(start){
-    let index = start * 1000
-  
-    let array = mobileJSON;
-    let batchOne = array.slice(index, index + 999);
-
-    // for (let i = 0; i < 1000; i++) {
-    //   const mobile = new Mobile(mobileObj)
-    //   data.push(mobile)
-    // }
-    return batchOne;
   }
 }
