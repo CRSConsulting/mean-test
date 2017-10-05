@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const mobileSchema = new Schema({
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date, default: Date.now },
   firstName: String,
   middleName: String,
   lastName: String,
@@ -44,7 +45,7 @@ const mobileSchema = new Schema({
   sweepsFee: String,
 }, {
   collection: 'mobileCause',
-  read: 'nearest'
+  read: 'nearest',
 });
 
 const Mobile = mongoose.model('Mobile', mobileSchema);

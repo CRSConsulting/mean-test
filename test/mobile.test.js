@@ -1,11 +1,12 @@
-const server = require('../src/server')
-const request = require('supertest')
-const mobileModel = require('../src/server/models/mobile.model')
-const chai = require('chai')
+const server = require('../src/server');
+const request = require('supertest');
+const mobileModel = require('../src/server/models/mobile.model');
+const chai = require('chai');
 
-chai.should()
-chai.use(require('chai-http'))
-const agent = chai.request.agent(server)
+chai.should();
+chai.use(require('chai-http'));
+
+const agent = chai.request.agent(server);
 
 
 // describe('Mobiles', function () {
@@ -18,10 +19,10 @@ const agent = chai.request.agent(server)
 //       done()
 //     }
 //   })
-describe('#GET / mobile', function () {
-  it('should get all mobiles', function (done) {
+describe('#GET / mobile', () => {
+  it('should get all mobiles', (done) => {
     agent.get('/mobile')
-      .end(function (err, res) {
+      .end((err, res) => {
         if (err) {
           return done(err)
         }
@@ -31,9 +32,9 @@ describe('#GET / mobile', function () {
   });
 });
 
-describe('#POST / mobile', function () {
-  it('should POST all mobile', function (done) {
-    let mobileObj = {
+describe('#POST / mobile', () => {
+  it('should POST all mobile', (done) => {
+    const mobileObj = {
       firstName: 'John',
       middleName: 'C',
       lastName: 'Yu',
@@ -72,16 +73,16 @@ describe('#POST / mobile', function () {
       raffle: 'Apple iPhone',
       raffleFee: '1',
       sweeps: 'Apple Computer',
-      sweepsFee: '1'
-    }
+      sweepsFee: '1',
+    };
     const data = [];
     for (let i = 0; i < 1000; i++) {
-      const mobile = new Mobile(mobileObj)
-      data.push(mobile)
+      const mobile = new Mobile(mobileObj);
+      data.push(mobile);
     }
     agent.post('/mobile')
       .send(data)
-      .end(function (err, res) {
+      .end((err, res) => {
         if (err) {
           return done(err)
         }

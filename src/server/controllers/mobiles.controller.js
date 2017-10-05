@@ -3,8 +3,8 @@ const mobilesService = require('../services/mobiles.services')({
   modelService: mobileModel, // passing in this model object is allowed b/c we pass in 'options' to our serivce
 });
 const Promise = require('bluebird');
-const cmd = require('node-cmd')
-;
+const cmd = require('node-cmd');
+
 const getAsync = Promise.promisify(cmd.get, {
   multiArgs: true,
   context: cmd,
@@ -42,7 +42,7 @@ function mobilesController() {
 
   function delay(t) {
     return new Promise(((resolve) => {
-      setTimeout(resolve, t)
+      setTimeout(resolve, t);
     }));
   }
 

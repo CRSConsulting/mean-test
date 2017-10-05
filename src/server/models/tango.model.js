@@ -3,18 +3,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const tangoSchema = new Schema({
-  createdAt: { type: Date, default: Date.now},
+  createdAt: { type: Date, default: Date.now },
   accountIdentifier: { type: String, required: true },
   amount: { type: Number, required: true },
   customerIdentifier: { type: String, required: true },
   emailSubject: { type: String, required: true },
   message: { type: String, required: true },
-  recipient:{
+  recipient: {
     email: { type: String, required: true },
     firstName: { type: String, required: true },
-    lastName: { type: String, required: true }
+    lastName: { type: String, required: true },
   },
-  sendEmail: {type: Boolean},
+  sendEmail: { type: Boolean },
   sender: {
     email: { type: String, required: true },
     firstName: { type: String, required: true },
@@ -23,7 +23,7 @@ const tangoSchema = new Schema({
   utid: { type: String, required: true },
 }, {
   collection: 'tango',
-  read: 'nearest'
+  read: 'nearest',
 });
 
 const Tango = mongoose.model('Tango', tangoSchema);
