@@ -8,9 +8,9 @@ const api = '/api';
 @Injectable()
 export class MobileService {
   constructor(private http: HttpClient) {}
-// getAll mobiles
+// getAll 1000 documents mobiles
   getMobiles() {
-    return this.http.get<Array<Mobile>>(`${api}/mobiles`)
+    return this.http.get<Array<Mobile>>(`${api}/mobile`)
   }
 
   addMobile(mobile: Mobile) {

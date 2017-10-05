@@ -1,0 +1,14 @@
+#
+config:
+  target: "http://localhost:3000/api"
+  http:
+    pool: 2 # All HTTP requests from all virtual users will be sent over the same 10 connections
+  phases:
+    - duration: 1
+      arrivalRate: 1
+
+scenarios:
+  - name: "insert 1000 documents to mlab"
+    flow:
+      - post:
+          url: "/mobile"
