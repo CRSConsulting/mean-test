@@ -12,7 +12,6 @@ src/server/env/environment.js
 /node_modules
 
 # environment
-.env
 
 # IDEs and editors
 /.idea
