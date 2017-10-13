@@ -5,7 +5,6 @@ module.exports = router;
 
 
 router.get('/', mobilesController.getAll);
-router.get('/keyword', mobilesController.getKeyword);
-router.post('/', mobilesController.insert);
+router.get('/keyword', mobilesController.getKeywordAndInsert);
 router.post('/sms', mobilesController.insertSMS);
 

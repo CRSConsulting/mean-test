@@ -1,6 +1,7 @@
-const ReadPreference = require('mongodb').ReadPreference;
-const mobileObj = require('./test-data/mobile.data');
-const mobileJSON = require('./test-data/mobile.many.data');
+const {
+  ReadPreference,
+} = require('mongodb');
+
 
 module.exports = mobilesService;
 
@@ -22,13 +23,14 @@ function mobilesService(options) {
     return Mobile.find({}).limit(1000).read(ReadPreference.NEAREST);
   }
 
-  function insert() {
+  function insert(jsonData) {
+    const mobileData = jsonData;
     const data = [];
 
-    for (let i = 0; i < 1000; i++) {
-      const mobile = new Mobile(mobileObj);
+    mobileData.forEach((cur) => {
+      const mobile = new Mobile(cur);
       data.push(mobile);
-    }
+    });
     return Mobile.insertMany(data);
   }
 }
